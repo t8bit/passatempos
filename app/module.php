@@ -1,7 +1,7 @@
 <?php	
 
 //get variable from fb;
-$perfil=$_SESSION['user_profile']['link'];
+/*$perfil=$_SESSION['user_profile']['link'];
 $name=$_SESSION['user_profile']['name'];
 $email=$_SESSION['user_profile']['email'];
 $location=$_SESSION['user_profile']['location']['name'];
@@ -10,7 +10,7 @@ $votos='sim';
 $vencedor='nao';
 $public='sim';
 $id_user=$_SESSION['user_profile']['id'];
-$id_passatempo='id';
+$id_passatempo='id';*/
 //classes
 class fbapp extends db
 {
