@@ -1,6 +1,6 @@
 <?php	
 //classes
-
+include('../fblogin.php');
 class fbapp extends db
 {
 	function __construct()

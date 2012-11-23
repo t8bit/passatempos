@@ -14,6 +14,15 @@
 	<link rel=stylesheet href="css/fbapp.css" type="text/css" media=screen>
 </head>
 <body>
+<pre>
+<?php
+	if(isset($_SESSION['user_profile']))
+	{
+		print_r($_SESSION);
+		echo "<a href='logout.php?logout'>Logout</a>";
+	}
+ ?>
+</pre>
 <div id='all'>	
 	<div id='left_passatempos' style='border:1px solid red;width:49%;float:left;'>
 		<h1><center>Passatempos em curso</center></h1>
