@@ -6,7 +6,7 @@ require 'config/functions.php';
 
 $facebook = new Facebook(array('appId' => APP_ID,'secret' => APP_SECRET));
 $user = $facebook->getUser();
-$login_url = $facebook->getLoginUrl(array( 'scope' => 'email'));
+$login_url = $facebook->getLoginUrl(array( 'scope' => 'email,publish_stream,user_likes,friends_likes,publish_stream'));
 header("Location: " . $login_url);
 print_r($user);
 
