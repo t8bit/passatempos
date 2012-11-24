@@ -1,9 +1,9 @@
 <?php
 //mbfexperience
-define('server','mysql2.host-services.com');
-define('user','WEMAKE_passa');
-define('pass','passatempos');
-define('db','WEMAKE_passatempos');
+define('server','localhost');
+define('user','root');
+define('pass','GhjteowiqjrPl');
+define('db','socialize');
 
 class db
 {
