@@ -28,7 +28,7 @@ var createhtml=function(data,id)
 	var html
 	html="<div style='border:1px solid green;width:100%;height:100%;'>"+data.desafio;
 	html=html+"<form method='post' action='' id='question'>";
-	html=html+"<input type='text' style='visibility:hidden;' value='"+id+"'/>";
+	html=html+"<input type='text' style='' value='"+id+"'/>";
 	switch(data.tipo)
 	{
 		case 'imagem':
@@ -73,7 +73,6 @@ var createhtml=function(data,id)
 			termos=$('#termos:checked').val();
 			question=$('.question:checked').val();
 			if(termos!=undefined && question!=undefined){sending=true;}else{sending=false;}
-
 			if(sending)
 			{
 				$.post("to_users.php", $('#question').serialize(),

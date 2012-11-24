@@ -12,7 +12,8 @@ class participacoes extends db
 	function addiciona($perfil,$nome,$email,$localidade,$data_nascimento,$resposa,$data_participacao,$ip,$votos,$vencedor,$publico,$id_facebook,$id_passatempo)
 	{
 		$query="INSERT INTO participacoes VALUES(0,'$perfil','$nome','$email','$localidade','$data_nascimento','$resposta','$data_participacao','$ip','$votos','$vencedor','$publico','$id_facebook','$id_passatempo'";
-		echo $query;
+		$resultado=$this->set($query);
+		echo $resultado;
 		
 	}
 }
