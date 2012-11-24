@@ -72,8 +72,8 @@ var createhtml=function(data,id)
 		//ajax send:
 			termos=$('#termos:checked').val();
 			question=$('.question:checked').val();
-			if(termos!=undefined){sending=true;}else{sending=false;}
-			if(question!=undefined){sending=true;}else{sending=false;}
+			if(termos!=undefined && question!=undefined){sending=true;}else{sending=false;}
+
 			if(sending)
 			{
 				$.post("to_users.php", $('#question').serialize(),
