@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once('db.class.php');
 class participacoes extends db
 {
@@ -35,13 +35,4 @@ $publico='sim';
 
 //executa funcoes
 $part->addiciona(0,$perfil,$name,$email,$location,$data_nascimento,$resposta,$data_participacao,$ip,$votos,$vencedor,$publico,$id_facebook,$id_passatempo);
-
-
-
-/*$votos='sim';
-$vencedor='nao';
-$public='sim';
-
-$id_passatempo='id';*/
-print_r($_POST);
 ?>
