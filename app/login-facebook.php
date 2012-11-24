@@ -6,7 +6,7 @@ require 'config/functions.php';
 
 $facebook = new Facebook(array('appId' => APP_ID,'secret' => APP_SECRET));
 $user = $facebook->getUser();
-$login_url = $facebook->getLoginUrl(array( 'scope' => 'email,publish_stream,user_likes,friends_likes'));
+$login_url = $facebook->getLoginUrl(array( 'scope' => 'email,publish_stream,user_likes,friends_likes,user_birthday'));
 header("Location: " . $login_url);
 print_r($user);
 
@@ -55,7 +55,7 @@ if ($user)
 else 
 {
     # There's no active session, let's generate one
-	$login_url = $facebook->getLoginUrl(array( 'scope' => 'email,publish_stream,user_likes,friends_likes'));
+	$login_url = $facebook->getLoginUrl(array( 'scope' => 'email,publish_stream,user_likes,friends_likes,user_birthday'));
     header("Location: " . $login_url);
 }
 ?>

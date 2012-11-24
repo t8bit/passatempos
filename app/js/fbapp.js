@@ -32,14 +32,14 @@ var createhtml=function(data,id)
 	switch(data.tipo)
 	{
 		case 'imagem':
-			html=html+"<input type='hidden' name='MAX_FILE_SIZE' value='100000' />Choose a file to upload: <input name='uploadedfile' type='file' /><br /><input type='submit' value='Upload File' />";
+			html=html+"<input type='hidden' name='MAX_FILE_SIZE' value='100000' />Choose a file to upload: <input name='question' type='file' /><br /><input type='submit' value='Upload File' />";
 		break;
 		case 'link_video':
-			html=html+"<input type='text' name='link_video'/>";
+			html=html+"<input type='text' name='question'/>";
 		break;
 		
 		case 'imagem_video':
-			html=html+"<input type='hidden' name='MAX_FILE_SIZE' value='100000' />Choose a file to upload: <input name='uploadedfile' type='file' /><br /><input type='submit' value='Upload File' />";
+			html=html+"<input type='hidden' name='MAX_FILE_SIZE' value='100000' />Choose a file to upload: <input name='question' type='file' /><br /><input type='submit' value='Upload File' />";
 		break;
 		
 		case 'texto':
@@ -75,18 +75,13 @@ var createhtml=function(data,id)
 			if(termos!=undefined && question!=undefined){sending=true;}else{sending=false;}
 			if(sending)
 			{
-				$.post("to_users.php", $('#question').serialize(),
-				function(data_final) 
-				{
-				
-				}
-				$('#all').html(data.agradecimentos);	
+				$('#all').html(data.agradecimentos);
+				$.post("to_users.php", $('#question').serialize(),function(data_final){alert(data_final);});	
 			}
 			else
 			{
 				alert("não preencheu os campos obrigatorios");
 			}
-		);
 		return false;		
 	});
 	
