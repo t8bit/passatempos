@@ -1,10 +1,8 @@
 $(document).ready(function() {
 	var sending;
-	
 	$(".submit").click(function() {
 		id=$(this).attr('alt');
 		estado=$(this).attr('alt2');
-		
 		$.post("index.php?route=fbapp", { formato: "json", id: id },
 				function(data) 
 				{
@@ -12,7 +10,7 @@ $(document).ready(function() {
 					console.log(decode_data[0].id );
 					if(estado=='begin')
 					{
-						createhtml(decode_data[0]);
+						createhtml(decode_data[0],id);
 					}
 					else
 					{
@@ -25,11 +23,12 @@ $(document).ready(function() {
 	});
 	
 });	
-var createhtml=function(data)
+var createhtml=function(data,id)
 {
 	var html
 	html="<div style='border:1px solid green;width:100%;height:100%;'>"+data.desafio;
 	html=html+"<form method='post' action='' id='question'>";
+	html=html+"<input type='hidden' value='"+id+"'/>";
 	switch(data.tipo)
 	{
 		case 'imagem':

@@ -16,21 +16,7 @@ if ($user)
 	{
 		// Proceed knowing you have a logged in user who's authenticated.
 		$user_profile = $facebook->api('/me');
-	//	$ret_obj = $facebook->api('/me/feed', 'POST', array('link' => 'www.painatal.com','message' => 'Tou a usar a app de passatempos que fixe, participa tu tambem' ));
-
-
-		
-
-
-			
-
-
-
-
-
-
-		
-		
+		//	$ret_obj = $facebook->api('/me/feed', 'POST', array('link' => 'www.painatal.com','message' => 'Tou a usar a app de passatempos que fixe, participa tu tambem' ));
 	} 
 	catch (FacebookApiException $e) 
 	{
