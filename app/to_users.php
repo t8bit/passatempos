@@ -1,5 +1,6 @@
 <?php
 session_start();
+print_r($_POST);
 require_once('db.class.php');
 class participacoes extends db
 {
@@ -10,9 +11,9 @@ class participacoes extends db
 	
 	function addiciona($perfil,$nome,$email,$localidade,$data_nascimento,$resposa,$data_participacao,$ip,$votos,$vencedor,$publico,$id_facebook,$id_passatempo)
 	{
-		//$query="INSERT INTO participacoes VALUES(0,'0','http://www.facebook.com/tiago.andre.12','Tiago André','tiago.ada@hotmail.com','Lisbon, Portugal','','antonio','data participaçao','85.241.170.200','votos','vencedor','sim','100001164151821'";
 		$query="INSERT INTO participacoes VALUES(0,'$perfil','$nome','$email','$localidade','$data_nascimento','$resposta','$data_participacao','$ip','$votos','$vencedor','$publico','$id_facebook','$id_passatempo'";
 		echo $query;
+		
 	}
 }
 //chama classes

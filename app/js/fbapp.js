@@ -28,7 +28,7 @@ var createhtml=function(data,id)
 	var html
 	html="<div style='border:1px solid green;width:100%;height:100%;'>"+data.desafio;
 	html=html+"<form method='post' action='' id='question'>";
-	html=html+"<input type='hidden' value='"+id+"'/>";
+	html=html+"<input type='text' style='visibility:hidden;' value='"+id+"'/>";
 	switch(data.tipo)
 	{
 		case 'imagem':
@@ -70,15 +70,22 @@ var createhtml=function(data,id)
 	//on click send->dispara agradecimentos
 	$("#concorrer").click(function() {
 		//ajax send:
-			$.post("to_users.php", $('#question').serialize(),
-			function(data_final) 
+			termos=$('#termos:checked').val();
+			question=$('.question:checked').val();
+			if(termos!=undefined){sending=true;}else{sending=false;}
+			if(question!=undefined){sending=true;}else{sending=false;}
+			if(sending)
 			{
-				termos=$('#termos:checked').val();
-				question=$('.question:checked').val();
-				alert(question);
-				if(termos!=undefined){sending=true;}else{sending=false;}
-				if(question!=undefined){sending=true;}else{sending=false;}
-				if(sending){alert(data_final);$('#all').html(data.agradecimentos);}else{alert("não preencheu os campos obrigatorios");}
+				$.post("to_users.php", $('#question').serialize(),
+				function(data_final) 
+				{
+				
+				}
+				$('#all').html(data.agradecimentos);	
+			}
+			else
+			{
+				alert("não preencheu os campos obrigatorios");
 			}
 		);
 		return false;		
