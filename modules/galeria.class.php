@@ -1,6 +1,6 @@
 <?php
 
-include('users.class.php');
+require_once('users.class.php');
 class galeria extends db
 {
 	private $id;

@@ -2,7 +2,7 @@
 //mbfexperience
 define('server','localhost');
 define('user','root');
-define('pass','GhjteowiqjrPl');
+define('pass','root');
 define('db','socialize');
 
 class db

@@ -1,5 +1,7 @@
 <?php
-include('users.class.php');
+require_once('users.class.php');
+require_once('galeria.class.php');
+
 class passatempos extends db{
 	
 	private $id;
@@ -62,19 +64,20 @@ class passatempos extends db{
 		return $data;
 	}
 	
-	function insert($id,$activo,$titulo,$resumo,$data_inicial,$data_final,$param1,$param2,$param3,$param4,$mec,$descricao,$tipo,$desafio,$minimo,$max_participacoes,$regulamento,$agradecimentos,$vencedores,$inicio,$imagem,$participacoes,$estado,$link,$accoes,$r1,$r2,$r3,$r4,$r5,$r6)
+	function insert($id,$activo,$titulo,$resumo,$data_inicial,$data_final,$param1,$param2,$param3,$param4,$mec,$descricao,$tipo,$desafio,$minimo,$max_participacoes,$regulamento,$agradecimentos,$vencedores,$inicio,$mostrar_imagem,$imagem,$participacoes,$estado,$link,$accoes,$r1,$r2,$r3,$r4,$r5,$r6,$viral,$fraseViral)
 	{
 		$this->get_id();
 		$user=$this->id;
-		$query="INSERT INTO passatempos VALUES('$id','$activo','$titulo','$resumo','$data_inicial','$data_final','$param1','$param2','$param3','$param4','$mec','$descricao','$tipo','$desafio','$minimo','$max_participacoes','$regulamento','$agradecimentos','$vencedores','$inicio','$imagem','$participacoes','$estado','$link','$accoes','$user','$r1','$r2','$r3','$r4','$r5','$r6')";
+		$query="INSERT INTO passatempos VALUES('$id','$activo','$titulo','$resumo','$data_inicial','$data_final','$param1','$param2','$param3','$param4','$mec','$descricao','$tipo','$desafio','$minimo','$max_participacoes','$regulamento','$agradecimentos','$vencedores','$inicio','$mostrar_imagem','$imagem','$participacoes','$estado','$link','$accoes','$user','$r1','$r2','$r3','$r4','$r5','$r6','$viral','$fraseViral')";
+
 		$data=$this->set($query);
 		return $data;
 	}
 	
-	function update($id,$activo,$titulo,$resumo,$data_inicial,$data_final,$param1,$param2,$param3,$param4,$mec,$descricao,$tipo,$desafio,$minimo,$max_participacoes,$regulamento,$agradecimentos,$vencedores,$inicio,$imagem,$participacoes,$estado,$link,$accoes) 
+	function update($id,$activo,$titulo,$resumo,$data_inicial,$data_final,$param1,$param2,$param3,$param4,$mec,$descricao,$tipo,$desafio,$minimo,$max_participacoes,$regulamento,$agradecimentos,$vencedores,$inicio,$mostrar_imagem,$imagem,$participacoes,$estado,$link,$accoes,$r1,$r2,$r3,$r4,$r5,$r6,$viral,$fraseViral) 
 	{
 		$this->get_id();
-		$query="UPDATE passatempos SET activo='$activo',titulo='$titulo',resumo='$resumo',data_inicial='$data_inicial',data_final='$data_final',param1='$param1',param2='$param2',param3='$param3',param4='$param4',mec='$mec',descricao='$descricao',tipo='$tipo',desafio='$desafio',minimo='$minimo',max_participacoes='$max_participacoes',regulamento='$regulamento',agradecimentos='$agradecimentos',vencedores='$vencedores',inicio='$inicio',imagem='$imagem',participacoes='$participacoes',estado='$estado',link='$link',accoes='$accoes' WHERE id='$id'";
+		$query="UPDATE passatempos SET activo='$activo',titulo='$titulo',resumo='$resumo',data_inicial='$data_inicial',data_final='$data_final',param1='$param1',param2='$param2',mostrar_imagem='$mostrar_imagem',param3='$param3',param4='$param4',mec='$mec',descricao='$descricao',tipo='$tipo',desafio='$desafio',minimo='$minimo',max_participacoes='$max_participacoes',regulamento='$regulamento',agradecimentos='$agradecimentos',vencedores='$vencedores',inicio='$inicio',imagem='$imagem',participacoes='$participacoes',estado='$estado',link='$link',accoes='$accoes',viral='$viral',fraseViral='$fraseViral',r1='$r1',r2='$r2',r3='$r3',r4='$r4',r5='$r5',r6='$r6' WHERE id='$id'";
 		$data=$this->set($query);
 		return $data;
 	}

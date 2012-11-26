@@ -12,17 +12,19 @@
 	<link rel=stylesheet href="css/style.css" type="text/css" media=screen>
 	<script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
 	<script type="text/javascript" src="js/gears.js"></script>
+	<script type="text/javascript" src="js/time.js"></script>
 	<script>
 		$(function() {
-			$( ".datepicker" ).datepicker();
+			$( ".datepicker" ).datetimepicker();
 		});
 		tinyMCE.init({
 			mode : "textareas"
 		});
+		
     </script>
 </head>
 
-<body>
+<body style='background-color:white;'>
 <div id='head1'>
 	<div id='sitename'><b>Backoffice</b></div>
 	<div id='useroptions'><b>Bem Vindo <?php echo $_SESSION['username']; ?>. / <a href='index.php?route=logout'>Logout</b></a></div>

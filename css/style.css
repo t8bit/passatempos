@@ -148,9 +148,9 @@ textarea{width:100%;height:300px;}
 
 .dot
 {
-	/*position:absolute;
+	/*position:absolute;*/
 	margin-left:10px;
-	margin-top:5px;*/
+	margin-top:5px;
 }
 
 .people
@@ -196,10 +196,6 @@ table
 	padding-bottom:10px;
 }
 
-#ui-datepicker-div
-{
-	background-color:orange;
-}
 
 .imagem_galeria
 {
@@ -214,5 +210,60 @@ table
 	top:0px;
 	right:0px;
 }
-.datas{width:10px;}
-.estado{width:10px;}
+
+
+/* css for timepicker */
+#ui-datepicker-div{background-color:orange;}
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
+
+/* external */
+.ui-widget-content
+{
+	border:1px solid #AAA;
+	background-color:white;
+	color:#222;
+}
+
+.ui-corner-all
+{
+	border-radius:4px;
+}	
+.ui-slider-horizontal
+{
+	height:.8em;
+}
+.ui-slider
+{
+	position:relative;
+	text-align:left;
+}
+.ui-state-default .ui-widget-content .ui-state-default
+{
+	border:1px solid black;
+	background-color: #666666;
+	font-weight:normal;
+	color:#555;
+}
+
+.ui-slider-horizontal .ui-slider-handle
+{
+	top:-.3em;
+	margin-left:-.6em;
+	position:absolute;
+	z-index:2;
+	width:1.2em;
+	height:1.2em;
+	cursor:default;
+	background-color:Grey;
+}
+

@@ -4,20 +4,40 @@ include('header.php');
 ?>
 <script>
 $(document).ready(function() {
+	$('#upload').attr('src','index.php?route=galeria&noheader');
+	
+	$('#images_loading').hide();
 	$('#add_imagem').click(function() {
-		$('#images_loading').load('index.php?route=galeria/add');
+		//scroll-bar position:
+		var height = $(window).height();
+		var width = $(window).width();
+		var scrollTop=$(window).scrollTop()
+
+		var topmais=(height-500)/2;
+		var leftmais=(width-800)/2;		
+		$('#images_loading').css('top',scrollTop+topmais);
+		$('#images_loading').css('left',leftmais);
+				
+		$('#images_loading').attr('src','index.php?route=galeria&noheader');
+		$('#images_loading').show();
 		return false;	
 	});
 	
 	$(".imagem").live("click", function(){
 		src=$(this).attr('src');
-		$('#imagem_add').val(src);
+		$('#fotografia').html("<img src='"+src+"' width='150px' height='150px' alt='imagem_passatempo'/>");
+		$('#images_loading').hide();
+		$('#add_imagem2').val(src);
 	});
 	
-	<?php if(!$passa->tipo=='multiplas'): ?>
+	
+	<?php if($passa->tipo!='multiplas'): ?>
 		$('.multiplas').hide();
 	<?php endif; ?>
-	
+	<?php if($passa->imagem!=''): ?>
+	$('#fotografia').html("<img src='<?php echo $passa->imagem; ?>' width='150px' height='150px' alt='imagem_passatempo'/>");
+	$('#add_imagem2').val('<?php echo $passa->imagem; ?>');
+	<?php endif; ?>
 	$('#tipo').change(function() {
 		tipoValor=$('#tipo').val();
 			
@@ -30,6 +50,9 @@ $(document).ready(function() {
 			$('.multiplas').hide();
 		}
 	});
+	
+	
+	
 });
 </script>
 <div id='head3'>
@@ -54,11 +77,11 @@ $(document).ready(function() {
 		</tr>
 		<tr>
 			<td class='name_'><b>Data inicial:</b></td>
-			<td class='left' style='text-align:left;'><input type='text' style='border:1px solid grey;' class='datepicker' name='data_inicial' value='<?php echo $passa->data_inicial; ?>'/></br></td>
+			<td class='left' style='text-align:left;'><input type='text' style='border:1px solid grey;' class='datepicker' name='data_inicial' value='<?php echo date("m/d/Y H:i",$passa->data_inicial); ?>'/></br></td>
 		</tr>
 		<tr>
 			<td class='name_'><b>Data final:</b></td>
-			<td class='left' style='text-align:left;s'><input type='text' style='border:1px solid grey;' class='datepicker' name='data_final' value='<?php echo $passa->data_final; ?>'/></br></td>
+			<td class='left' style='text-align:left;'><input type='text' style='border:1px solid grey;' class='datepicker' name='data_final' value='<?php echo date("m/d/Y H:i",$passa->data_final); ?>'/></br></td>
 		</tr>	
 	</table>
 	
@@ -224,7 +247,15 @@ $(document).ready(function() {
 		</tr>
 		<tr>
 			<td class='name_'><b>Inicio da publicação de vencedores</b></td>
-			<td class='left' style='text-align:left;'><input type='text' name='inicio' class='datepicker' value='<?php echo $passa->inicio; ?>'/></td>
+			<td class='left' style='text-align:left;'><input type='text' name='inicio' class='datepicker' value='<?php echo  date("m/d/Y H:i",$passa->inicio); ?>'/></td>
+		</tr>
+		<tr>
+			<td class='name_'><b>Activar frase viral</b></td>
+			<td class='left' style='text-align:left;'><input type="checkbox" name="viral" value="1" <?php if($passa->viral==1){echo 'checked';} ?></td>
+		</tr>
+		<tr>
+			<td class='name_'><b>Frase Viral</b></td>
+			<td class='left' style='text-align:left;'><input type='text' class='w700' name='fraseViral' value='<?php echo $passa->fraseViral;?>'/></td>
 		</tr>
 	</table>
 	
@@ -232,17 +263,24 @@ $(document).ready(function() {
 	
 	<table border='0'>
 		<tr>
-			<td class='name_'><input type='checkbox' value='' name='imagem'> Mostrar imagem na página de detalhe do passatempo</td>
+			<td class='name_'><input type='checkbox' value='1' name='mostraImg' <?php if($passa->mostrar_imagem){echo 'checked';} ?>/> Mostrar imagem na página de detalhe do passatempo</td>
 			<td class='left'></td>
 		</tr>
 		<tr>
 			<td class='name_'><b>Imagem:</b></td>
 			<td class='left' style='text-align:left;'>
-				<input type='text' name='imagem' id='imagem_add'/>
+				<div id='fotografia'></div>
+				<input type='text' value='' name='imagem' id='add_imagem2'/>
 				<input type="submit" id='add_imagem' name="submit" value="Adicionar imagem" />
 			</td>
 		</tr>
 	</table>
 	<input type="submit" value="Inserir" />
 </form>
-<div id='images_loading' style='width:500px;height:500px;'></div>
+<div id='images_loading' style='position:absolute;border:1px solid black;background-color:grey;width:800px;height:500px'>
+	<div id='show_images'>
+		<?php foreach($galery as $pic): ?>
+		<div style='float:left;padding:10px;'><img class='imagem' src='galeria/<?php echo $pic->imagem; ?>' width='150px' height='150px' alt='imagem'/></div>
+		<?php endforeach; ?>
+	</div>
+</div>

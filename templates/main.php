@@ -42,9 +42,9 @@ include('header.php');
 				<td><a href='<?php echo "?route=passatempos/".$passa->id; ?>'><?php echo $passa->titulo; ?></a></td>
 				<td><a href='<?php echo "index.php?route=passatempos/".$passa->id."/view"; ?>'>Ver</a></td>
 				<td><?php echo $passa->estado; ?></td>
-				<td><?php echo $passa->data_inicial; ?></td>
-				<td><?php echo $passa->data_final; ?></td>
-				<td><?php echo calcula_dias($passa->data_inicial,$passa->data_final); ?> dias</td>
+				<td><?php echo date("m/d/Y H:i",$passa->data_inicial); ?></td>
+				<td><?php echo date("m/d/Y H:i",$passa->data_final); ?></td>
+				<td><?php echo (int) (($passa->data_final-$passa->data_inicial)/86400); ?> dias</td>
 				<td><a href='?route=participacoes/<?php echo $passa->id; ?>'><?php echo $passa->participacoes; ?></a></td>
 				<td><img src='<?php echo $passa->imagem; ?>' alt='image' width='150px' height='150px'/></td>
 			</tr>
@@ -58,7 +58,7 @@ include('header.php');
 				<li><b>Estado</b></li>
 				<li><a href='?route=passatempos/'>Todos</a></li>
 				<li><a href='?route=passatempos/&filter=estado&value=inactivo'>Inactivo</a></li>
-				<li><a href='?route=passatempos/&filter=estado&value=emcurso'>Em curso</a></li>
+				<li><a href='?route=passatempos/&filter=estado&value=em%20curso'>Em curso</a></li>
 				<li><a href='?route=passatempos/&filter=estado&value=poriniciar'>Por iniciar</a></li>
 				<li><a href='?route=passatempos/&filter=estado&value=terminado'>Terminado</a></li>
 			</ul>
