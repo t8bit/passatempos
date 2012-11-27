@@ -14,15 +14,19 @@ $(document).ready(function() {
 					}
 					else
 					{
-						$('#all').html("Vencedores:<br/>"+decode_data[0].vencedores);
-					}
+						html="<div style='text-align:center;'><img src='images/ganadores.png' alt='ganadores' width='500px'/></div>";
+			
+						html=html+"<div style='text-align:center;'"+decode_data[0].vencedores+"</div>";	
+						html=html+"<div class='reload2' style='position:absolute;top:545px;left:34px;cursor:pointer'><img src='images/back.png' alt=''/></div></div>";
+						$('#all').html(html);
+					}	
 				}
 			);
 		
 		return false;
 	});
 	
-
+	$(".reload2").live("click", function(){location.reload();});
 	
 	$(".votar").click(function() {
 		id=$(this).attr('alt');
@@ -53,7 +57,7 @@ var createhtml=function(data,id)
 	html="";
 	if(data.mostrar_imagem==1)
 	{
-		html=html+"<center><img src='../"+data.imagem+"' alt='imagem_passatempo' width='150px' height='150px'/></center>";
+		html=html+"<center><img src='../"+data.imagem+"' alt='imagem_passatempo' /></center>";
 	}
 	
 	html=html+"<div style='width:100%;height:100%;'><center>"+data.desafio+"";
@@ -87,12 +91,15 @@ var createhtml=function(data,id)
 	}
 	if(data.param4==1)
 	{
-		html=html+"<br>Telefone: <input type='text' name='telefone'/>";
+		html=html+"<br>Teléfono: <input type='text' name='telefone'/>";
 	}
-	html=html+"<br><br><input type='checkbox' id='termos' name='termos' value='aceito'>Aceito os termos de <span id='termos_checkbox' style='font-weight:bold;text-decoration:underline;cursor:pointer;'>ultilização</span><br><br>";
+	html=html+"<br><br><input type='checkbox' id='termos' name='termos' value='aceito'>Acepto las condiciones de <span id='termos_checkbox' style='font-weight:bold;text-decoration:underline;cursor:pointer;'>uso</span><br><br>";
 	html=html+"<input type='submit' id='concorrer' value='Concorrer'/><br>";
 	html=html+"</form>";
-	html=html+"</center></div>";
+	html=html+"</center><div class='reload' style='position:absolute;top:545px;left:34px;cursor:pointer'><img src='images/back.png' alt=''/></div>";
+	html=html+"<div style='position:absolute;top:480px;left:690px;'><img src='images/logo.png' alt='logo'/></div>";
+	html=html+"</div>";
+	
 	$("#all").html(html);
 	var r;
 	$("#termos_checkbox").live("click", function(){
@@ -116,7 +123,10 @@ var createhtml=function(data,id)
 			{
 				
 				$.post("to_users.php", $('#passatempo_question').serialize(),function(data_final){});
-				$('#all').html(data.agradecimentos);	
+				html="<div style='text-align:center;margin-top:100px;'><img src='images/gracias.png' alt='gracias'/></div>"
+				html=html+"<div style='text-align:center;font-weight:bold;'"+data.agradecimentos+"</div><div class='reload' style='position:absolute;top:545px;left:34px;cursor:pointer'><img src='images/back.png' alt=''/></div>";
+				
+				$('#all').html(html);	
 			}
 			else
 			{
@@ -124,5 +134,7 @@ var createhtml=function(data,id)
 			}
 		return false;		
 	});
+	
+	$(".reload").live("click", function(){location.reload();});
 	
 }
